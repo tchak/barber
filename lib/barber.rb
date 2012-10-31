@@ -1,0 +1,5 @@
+require "barber/version"
+require "barber/handlebars/precompiler"
+require "barber/handlebars/compilers"
+require "barber/ember/precompiler"
+require "barber/ember/compilers"
