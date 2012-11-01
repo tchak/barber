@@ -2,11 +2,11 @@
 require File.expand_path('../lib/barber/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.authors       = ["tchak"]
+  gem.authors       = ["tchak", "twinturbo"]
   gem.email         = ["paul@chavard.net"]
   gem.description   = %q{Handlebars precompilation}
   gem.summary       = %q{Handlebars precompilation toolkit}
-  gem.homepage      = ""
+  gem.homepage      = "https://github.com/tchak/barber"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
