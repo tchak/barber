@@ -9,7 +9,7 @@ require "barber/ember/precompilers"
 module Barber
   class PrecompilerError < StandardError
     def initialize(template, error)
-      @template, @error = @template, error
+      @template, @error = template, error
     end
 
     def to_s
