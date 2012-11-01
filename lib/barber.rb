@@ -1,8 +1,10 @@
 require "barber/version"
-require "barber/handlebars/precompiler"
-require "barber/handlebars/compilers"
+
+require "barber/precompiler"
+require "barber/precompilers"
+
 require "barber/ember/precompiler"
-require "barber/ember/compilers"
+require "barber/ember/precompilers"
 
 module Barber
   class PrecompilerError < StandardError
