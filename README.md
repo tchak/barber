@@ -8,7 +8,7 @@ Barber as part of your project build system or with someting like
 
 Add this line to your application's Gemfile:
 
-    gem 'barbr'
+    gem 'barber'
 
 And then execute:
 
