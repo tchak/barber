@@ -1,18 +1,18 @@
 module Barber
-  module Handlebars
-    class InlineCompiler
+  module Ember
+    class InlinePrecompiler
       class << self
         def call(template)
-          "Handlebars.template(#{compile(template)})"
+          "Ember.Handlebars.template(#{compile(template)})"
         end
 
         def compile(template)
-          Barber::Handlebars::Precompiler.compile template
+          Barber::Ember::Precompiler.compile template
         end
       end
     end
 
-    class FileCompiler < InlineCompiler
+    class FilePrecompiler < InlinePrecompiler
       class << self
         def call(template)
           "#{super};"
