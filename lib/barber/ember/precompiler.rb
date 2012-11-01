@@ -3,11 +3,11 @@ module Barber
     class Precompiler < Barber::Handlebars::Precompiler
       class << self
         def ember_path
-          File.expand_path("../javascripts/ember.js", __FILE__)
+          File.expand_path("../../javascripts/ember.js", __FILE__)
         end
 
         def precompiler_path
-          File.expand_path("../javascripts/ember_precompiler.js", __FILE__)
+          File.expand_path("../../javascripts/ember_precompiler.js", __FILE__)
         end
 
         def sources

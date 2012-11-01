@@ -1,4 +1,5 @@
 require 'json'
+require 'execjs'
 
 module Barber
   module Handlebars
@@ -15,7 +16,7 @@ module Barber
 
           context.call precompile_function, content
         rescue ExecJS::ProgramError => ex
-          raise PrecompilerError.new(source, ex)
+          raise Barber::PrecompilerError.new(source, ex)
         end
 
         def precompile_function
@@ -23,15 +24,15 @@ module Barber
         end
 
         def handlebars_path
-          File.expand_path("../javascripts/handlebars.js", __FILE__)
+          File.expand_path("../../javascripts/handlebars.js", __FILE__)
         end
 
         def precompiler_path
-          File.expand_path("../javascripts/handlebars_precompiler.js", __FILE__)
+          File.expand_path("../../javascripts/handlebars_precompiler.js", __FILE__)
         end
 
         def sources
-          [handlebars_path]
+          [precompiler_path, handlebars_path]
         end
 
         private
