@@ -16,7 +16,21 @@ class PrecompilerTest < MiniTest::Unit::TestCase
     {{view Radium.RangeChangerView}}
     hbs
 
-    result = compile JSON.dump({:template => template})['template']
+    result = compile template
+    assert result
+  end
+
+  def test_handles_multiline_coffeescript_strings
+    template = '<h2>{{unbound view.title}}</h2>\n<ul>\n  {{#each view.content}}\n    {{view view.resultItemView\n      contentBinding="this"\n      selectedItemBinding="view.selectedItem"}}\n  {{/each}}\n</ul>'
+
+    result = compile template
+    assert result
+  end
+
+  def test_handles_prescaped_JSON_strings
+    template = '"<div class=\"comments\">\n  <div class=\"span5 offset1\">\n    {{#if view.comments.length}}\n    <ul class=\"comments-list unstyled\">\n      {{#each view.comments}}\n        {{view Radium.CommentView commentBinding=\"this\"}}\n      {{/each}}\n    </ul>\n    {{/if}}\n    {{#if view.isError}}\n      <p class=\"error\">Hmm, something wasn\'t done correctly. Try again?</p>\n    {{/if}}\n    <div style=\"clear: both\"></div>\n    {{view view.commentTextArea}}\n  </div>\n</div>\n"'
+
+    result = compile template
     assert result
   end
 
