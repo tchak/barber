@@ -28,16 +28,16 @@ module Barber
     end
 
     def sources
-      [precompiler_path, handlebars_path]
+      [precompiler, handlebars]
     end
 
-    def handlebars_path
-      @handlebears_path ||= File.new(File.expand_path("../javascripts/handlebars.js", __FILE__))
+    def handlebars
+      @handlebears ||= File.new(File.expand_path("../javascripts/handlebars.js", __FILE__))
     end
 
     private
-    def precompiler_path
-      @precompiler_path ||= File.new(File.expand_path("../javascripts/handlebars_precompiler.js", __FILE__))
+    def precompiler
+      @precompiler ||= File.new(File.expand_path("../javascripts/handlebars_precompiler.js", __FILE__))
     end
 
     def context
