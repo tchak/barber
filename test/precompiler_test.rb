@@ -20,7 +20,7 @@ class PrecompilerTest < MiniTest::Unit::TestCase
     {{view Radium.RangeChangerView}}
     hbs
 
-    result = compile JSON.dump(template)
+    result = compile JSON.dump({:template => template})['template']
     assert result
   end
 
@@ -33,7 +33,7 @@ class PrecompilerTest < MiniTest::Unit::TestCase
     {{view Radium.RangeChangerView}}
     hbs
 
-    result = compile_ember JSON.dump(template)
+    result = compile JSON.dump({:template => template})['template']
     assert result
   end
 
