@@ -1,4 +1,5 @@
 require 'execjs'
+require 'json'
 
 module Barber
   class Precompiler
@@ -45,14 +46,14 @@ module Barber
       begin
         if template =~ /\A".+"\Z/m
           # Case 1
-          MultiJson.load(%Q|{"template":#{template}}|)['template']
+          JSON.load(%Q|{"template":#{template}}|)['template']
         else
           # Case 2: evaluate a literal JS string in Ruby in the JS context
           # to get an equivalent Ruby string back. This will convert liternal \n's
           # to new lines. This is safer than trying to modify the string using regex.
           context.eval("'#{template}'")
         end
-      rescue
+      rescue JSON::ParserError, ExecJS::RuntimeError
         # Case 3
         template
       end
