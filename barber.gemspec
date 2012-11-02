@@ -3,7 +3,7 @@ require File.expand_path('../lib/barber/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["tchak", "twinturbo"]
-  gem.email         = ["paul@chavard.net"]
+  gem.email         = ["paul@chavard.net", "me@boardcastingadam.com"]
   gem.description   = %q{Handlebars precompilation}
   gem.summary       = %q{Handlebars precompilation toolkit}
   gem.homepage      = "https://github.com/tchak/barber"
