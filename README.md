@@ -1,4 +1,4 @@
-# Barber
+# Barber [![Build Status](https://travis-ci.org/tchak/barber.png)](https://travis-ci.org/tchak/barber)
 
 Barber handles all your Handlebars precompilation needs. You can use
 Barber as part of your project build system or with someting like
