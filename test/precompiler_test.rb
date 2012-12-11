@@ -67,6 +67,6 @@ class PrecompilerTest < MiniTest::Unit::TestCase
   end
 
   def sanitize(template)
-    Barber::Precompiler.new.sanitize template
+    Barber::Precompiler.new.send :sanitize, template
   end
 end

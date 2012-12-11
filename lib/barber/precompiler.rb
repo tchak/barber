@@ -27,6 +27,7 @@ module Barber
       @handlebears ||= File.new(File.expand_path("../javascripts/handlebars.js", __FILE__))
     end
 
+    private
     # This method handles different types of user input. The precompiler
     # can be called from many different places which create interesting 
     # conditions.
@@ -51,7 +52,6 @@ module Barber
       end
     end
 
-    private
     def precompiler
       @precompiler ||= File.new(File.expand_path("../javascripts/handlebars_precompiler.js", __FILE__))
     end
