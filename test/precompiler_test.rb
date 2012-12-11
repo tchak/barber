@@ -7,6 +7,11 @@ class PrecompilerTest < MiniTest::Unit::TestCase
     assert result
   end
 
+  def test_compiles_nil_template
+    result = compile nil
+    assert result
+  end
+
   def test_compiles_templates_with_quotes
     template = <<-hbs
     <div class="calendar">

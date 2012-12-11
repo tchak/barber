@@ -39,7 +39,10 @@ module Barber
     # Each one of these cases is covered by a test case. If you find another breaking
     # use case please address it here with a regression test.
     def sanitize(template)
-      if template =~ /\A".+"\Z/m
+      case template
+      when nil
+        ''
+      when /\A".+"\Z/m
         # Case 1
         JSON.load(%Q|{"template":#{template}}|)['template']
       else
