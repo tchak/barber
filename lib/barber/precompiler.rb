@@ -45,7 +45,11 @@ module Barber
         ''
       when /\A".+"\Z/m
         # Case 1
-        JSON.load(%Q|{"template":#{template}}|)['template']
+        begin
+          JSON.load(%Q|{"template":#{template}}|)['template']
+        rescue JSON::ParserError
+          template
+        end
       else
         # Case 2
         template.gsub(/\\n/,"\n")
