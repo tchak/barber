@@ -23,8 +23,10 @@ class PrecompilerTest < MiniTest::Unit::TestCase
   def test_handles_multiline_coffeescript_strings
     template = '<h2>{{unbound view.title}}</h2>\n<ul>\n  {{#each view.content}}\n    {{view view.resultItemView\n      contentBinding="this"\n      selectedItemBinding="view.selectedItem"}}\n  {{/each}}\n</ul>'
 
-    result = compile template
-    assert result
+    sanitized = "<h2>{{unbound view.title}}</h2>\n<ul>\n  {{#each view.content}}\n    {{view view.resultItemView\n      contentBinding=\"this\"\n      selectedItemBinding=\"view.selectedItem\"}}\n  {{/each}}\n</ul>"
+
+    result = sanitize template
+    assert_equal sanitized, result
   end
 
   def test_handles_prescaped_JSON_strings
@@ -57,5 +59,9 @@ class PrecompilerTest < MiniTest::Unit::TestCase
   private
   def compile(template)
     Barber::Precompiler.compile template
+  end
+
+  def sanitize(template)
+    Barber::Precompiler.new.sanitize template
   end
 end
