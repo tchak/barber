@@ -39,6 +39,7 @@ module Barber
     #   break the compiler when \n are present in view helpers. Coffeescript block strings
     #   usually cause this problem.
     # Case 3: "Normal" input. Reading from a file or something like that.
+    # Case 4: Sanitize using a RegExp (edge cases with jRuby + Rhino)
     #
     # Each one of these cases is covered by a test case. If you find another breaking
     # use case please address it here with a regression test.
@@ -46,15 +47,34 @@ module Barber
       begin
         if template =~ /\A".+"\Z/m
           # Case 1
-          JSON.load(%Q|{"template":#{template}}|)['template']
+          sanitize_with_json(template)
         else
           # Case 2: evaluate a literal JS string in Ruby in the JS context
           # to get an equivalent Ruby string back. This will convert liternal \n's
           # to new lines. This is safer than trying to modify the string using regex.
-          context.eval("'#{template}'")
+          sanitize_with_execjs(template)
         end
-      rescue JSON::ParserError, ExecJS::RuntimeError
+      rescue JSON::ParserError
         # Case 3
+        template
+      rescue ExecJS::RuntimeError
+        # Case 4
+        sanitize_with_regexp(template)
+      end
+    end
+
+    def sanitize_with_json(template)
+      JSON.load(%Q|{"template":#{template}}|)['template']
+    end
+
+    def sanitize_with_execjs(template)
+      context.eval("'#{template}'")
+    end
+
+    def sanitize_with_regexp(template)
+      if template.respond_to? :gsub
+        template.gsub(/\\n/,"\n")
+      else
         template
       end
     end
