@@ -54,10 +54,10 @@ module Barber
           # to new lines. This is safer than trying to modify the string using regex.
           sanitize_with_execjs(template)
         end
-      rescue JSON::ParserError
+      rescue JSON::ParserError, ExecJS::RuntimeError
         # Case 3
         template
-      rescue ExecJS::RuntimeError
+      rescue ExecJS::ProgramError
         # Case 4
         sanitize_with_regexp(template)
       end

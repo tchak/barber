@@ -67,7 +67,7 @@ class PrecompilerTest < MiniTest::Unit::TestCase
   end
 
   def test_sanitize_with_execjs_prescaped_JSON_strings
-    assert_raises ExecJS::RuntimeError do
+    assert_raises ExecJS::RuntimeError, ExecJS::ProgramError do
       sanitize_with_execjs template_with_prescaped_JSON_strings
     end
   end
