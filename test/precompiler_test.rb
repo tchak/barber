@@ -35,6 +35,11 @@ class PrecompilerTest < MiniTest::Unit::TestCase
     assert result
   end
 
+  def test_handles_single_quoted_strings
+    result = compile template_with_single_quoted_strings
+    assert result
+  end
+
   def test_sanitize_with_json_multiline_coffeescript_strings
     assert_raises JSON::ParserError do
       sanitize_with_json template_with_multiline_coffeescript_strings
@@ -123,5 +128,9 @@ class PrecompilerTest < MiniTest::Unit::TestCase
 
   def template_with_prescaped_JSON_strings
     '"<div class=\"comments\">\n  <div class=\"span5 offset1\">\n    {{#if view.comments.length}}\n    <ul class=\"comments-list unstyled\">\n      {{#each view.comments}}\n        {{view Radium.CommentView commentBinding=\"this\"}}\n      {{/each}}\n    </ul>\n    {{/if}}\n    {{#if view.isError}}\n      <p class=\"error\">Hmm, something wasn\'t done correctly. Try again?</p>\n    {{/if}}\n    <div style=\"clear: both\"></div>\n    {{view view.commentTextArea}}\n  </div>\n</div>\n"'
+  end
+
+  def template_with_single_quoted_strings
+    "<h2>{{unbound view.title}}</h2>\n<ul>\n  {{#each view.content}}\n    {{view view.resultItemView\n      contentBinding='this'\n      selectedItemBinding='view.selectedItem'}}\n  {{/each}}\n</ul>"
   end
 end
