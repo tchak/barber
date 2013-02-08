@@ -88,7 +88,7 @@ module Barber
     end
 
     def source
-      @source ||= sources.map(&:read).join("\n")
+      @source ||= sources.map(&:read).join("\n;\n")
     end
   end
 end
