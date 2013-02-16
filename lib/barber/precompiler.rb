@@ -68,7 +68,7 @@ module Barber
     end
 
     def sanitize_with_execjs(template)
-      context.eval("'#{template}'")
+      template.nil? ? " " : context.eval("'#{template}'")
     end
 
     def sanitize_with_regexp(template)
