@@ -3,7 +3,7 @@ module Barber
     class Precompiler < Barber::Precompiler
 
       def ember_template_precompiler
-        @ember ||= File.new(EmberTemplateCompiler::Source.bundled_path)
+        @ember ||= File.new(::Ember::Source.bundled_path_for("ember-template-compiler.js"))
       end
 
       def precompiler

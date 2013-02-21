@@ -3,6 +3,6 @@
 source "https://rubygems.org"
 
 gem "therubyrhino", :platform=>:jruby
-gem "ember-template-compiler-source", "~> 1.0.0.rc1"
+gem "ember-source", "1.0.0.rc1.0"
 
 gemspec :path=>"../"
