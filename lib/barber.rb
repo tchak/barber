@@ -1,5 +1,8 @@
 require "barber/version"
 
+require 'handlebars/source'
+require 'ember-template-compiler/source'
+
 require "barber/precompiler"
 require "barber/precompilers"
 
