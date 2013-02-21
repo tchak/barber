@@ -1,8 +1,8 @@
 PATH
   remote: /Users/machty/code/gits/barber
   specs:
-    barber (0.3.0)
-      ember-template-compiler-source
+    barber (0.4.0)
+      ember-source
       execjs
       handlebars-source
 
@@ -12,7 +12,7 @@ GEM
     appraisal (0.5.1)
       bundler
       rake
-    ember-template-compiler-source (1.0.0.rc1)
+    ember-source (1.0.0.rc1.0)
       handlebars-source (= 1.0.0.rc3)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -33,7 +33,7 @@ PLATFORMS
 DEPENDENCIES
   appraisal
   barber!
-  ember-template-compiler-source (~> 1.0.0.rc1)
+  ember-source (= 1.0.0.rc1.0)
   mocha
   rake
   simplecov
