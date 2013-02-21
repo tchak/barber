@@ -24,7 +24,7 @@ module Barber
     end
 
     def handlebars
-      @handlebears ||= File.new(File.expand_path("../javascripts/handlebars.js", __FILE__))
+      @handlebears ||= File.new(Handlebars::Source.bundled_path)
     end
 
     private

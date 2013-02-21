@@ -20,11 +20,6 @@ class PrecompilerTest < MiniTest::Unit::TestCase
     assert result
   end
 
-  def test_handles_nil_template
-    result = compile nil
-    assert result
-  end
-
   def test_handles_multiline_coffeescript_strings
     result = compile template_with_multiline_coffeescript_strings
     assert result
