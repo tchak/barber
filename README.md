@@ -83,6 +83,8 @@ subsituted for procs/lambda where needed. Here's how you can get
 precompilation of your ember templates with rake-pipeline-web-filters:
 
 ```ruby
+require 'barber'
+
 match "**/*.handlebars" do
   handlebars :wrapper_proc => Barber::Ember::FilePrecompiler
 end
