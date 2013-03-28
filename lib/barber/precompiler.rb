@@ -58,7 +58,9 @@ module Barber
 
     def sanitize_with_regexp(template)
       if template.respond_to? :gsub
-        template.gsub(/\\n/,"\n")
+        sanitized = template.gsub(/\\n/,"\n")
+        sanitized = sanitized.gsub(/\\["']/, '"')
+        sanitized
       else
         template
       end
