@@ -25,6 +25,11 @@ class PrecompilerTest < MiniTest::Unit::TestCase
     assert result
   end
 
+  def test_handles_coffeescript_strings_with_qoutes_in_helpers
+    result = compile template_with_coffeescript_qoutes_in_helpers
+    assert result
+  end
+
   def test_handles_prescaped_JSON_strings
     result = compile template_with_prescaped_JSON_strings
     assert result
@@ -100,6 +105,10 @@ class PrecompilerTest < MiniTest::Unit::TestCase
 
   def template_with_multiline_coffeescript_strings
     '<h2>{{unbound view.title}}</h2>\n<ul>\n  {{#each view.content}}\n    {{view view.resultItemView\n      contentBinding="this"\n      selectedItemBinding="view.selectedItem"}}\n  {{/each}}\n</ul>'
+  end
+
+  def template_with_coffeescript_qoutes_in_helpers
+    '<li {{action showContextMenu this target=\"view\"}}Foo</li>'
   end
 
   def sanitized_template_with_multiline_coffeescript_strings
