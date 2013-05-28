@@ -16,7 +16,7 @@ Gem::Specification.new do |gem|
   gem.version       = Barber::VERSION
 
   gem.add_dependency "execjs"
-  gem.add_dependency "handlebars-source", [">= 1.0.0.rc.3"]
+  gem.add_dependency "handlebars-source", [">= 1.0.0.rc.4"]
   gem.add_dependency "ember-source"
 
   gem.add_development_dependency "rake"
