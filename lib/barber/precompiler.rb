@@ -24,7 +24,7 @@ module Barber
     end
 
     def handlebars
-      @handlebears ||= File.new(Handlebars::Source.bundled_path)
+      @handlebars ||= File.new(Handlebars::Source.bundled_path)
     end
 
     private
