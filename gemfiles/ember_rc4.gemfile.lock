@@ -12,11 +12,11 @@ GEM
     appraisal (0.5.1)
       bundler
       rake
-    ember-source (1.0.0.pre4.1)
-      handlebars-source (>= 1.0.0.rc2)
+    ember-source (1.0.0.rc4)
+      handlebars-source (= 1.0.0.rc4)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    handlebars-source (1.0.0.rc2)
+    handlebars-source (1.0.0.rc4)
     metaclass (0.0.1)
     mocha (0.13.3)
       metaclass (~> 0.0.1)
@@ -33,8 +33,8 @@ PLATFORMS
 DEPENDENCIES
   appraisal
   barber!
-  ember-source (= 1.0.0.pre4.1)
-  handlebars-source (= 1.0.0.rc2)
+  ember-source (= 1.0.0.rc4)
+  handlebars-source (= 1.0.0.rc4)
   mocha
   rake
   simplecov
