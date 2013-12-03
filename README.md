@@ -34,7 +34,7 @@ require 'barber'
 Barber::FilePrecompiler.call(File.read("template.handlebars"))
 # "Handlebars.template(function(...));"
 
-Barber::InlinePreCompiler.call(File.read("template.handlebars"))
+Barber::InlinePrecompiler.call(File.read("template.handlebars"))
 # Note the missing semicolon. You can use this with gsub to replace
 # calls to inline templates
 # "Handlebars.template(function(...))"
