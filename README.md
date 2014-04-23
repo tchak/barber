@@ -2,7 +2,7 @@
 
 Barber handles all your Handlebars precompilation needs. You can use
 Barber as part of your project build system or with someting like
-[rake-pipeline](https://github.com/living-social/rake-pipeline).
+[rake-pipeline](https://github.com/livingsocial/rake-pipeline).
 
 ## Installation
 
