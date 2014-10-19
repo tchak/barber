@@ -1,0 +1,43 @@
+PATH
+  remote: ../
+  specs:
+    barber (0.4.2)
+      ember-source
+      execjs
+      handlebars-source (>= 1.0.0.rc.4)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    appraisal (1.0.2)
+      bundler
+      rake
+      thor (>= 0.14.0)
+    docile (1.1.5)
+    ember-source (1.9.0.alpha.2)
+      handlebars-source (~> 2.0)
+    execjs (2.2.2)
+    handlebars-source (2.0.0)
+    metaclass (0.0.4)
+    mocha (1.0.0)
+      metaclass (~> 0.0.1)
+    multi_json (1.10.1)
+    rake (10.3.2)
+    simplecov (0.9.1)
+      docile (~> 1.1.0)
+      multi_json (~> 1.0)
+      simplecov-html (~> 0.8.0)
+    simplecov-html (0.8.0)
+    thor (0.19.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  appraisal
+  barber!
+  ember-source (~> 1.9.0.alpha.2)
+  mocha (~> 1.0.0)
+  rake
+  simplecov
+  therubyrhino
