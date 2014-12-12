@@ -23,4 +23,5 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency "simplecov"
   gem.add_development_dependency "mocha", "~> 1.0"
   gem.add_development_dependency "appraisal"
+  gem.add_development_dependency "minitest", "~> 4.0"
 end
