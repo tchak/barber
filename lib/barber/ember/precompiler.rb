@@ -11,7 +11,7 @@ module Barber
       end
 
       def sources
-        [precompiler, handlebars, ember_template_precompiler]
+        super + [ember_template_precompiler]
       end
     end
   end

@@ -20,7 +20,9 @@ module Barber
     end
 
     def sources
-      [precompiler, handlebars]
+      sources = [precompiler]
+      sources << handlebars if handlebars_available?
+      sources
     end
 
     def handlebars
@@ -82,6 +84,14 @@ if (typeof window === 'undefined') {
 };
 #{sources.map(&:read).join("\n;\n")}
       SOURCE
+    end
+
+    def handlebars_available?
+      require "handlebars/source" # handlebars precompilation is optional feature.
+    rescue LoadError
+      # noop
+    ensure
+      return !!defined?(Handlebars::Source)
     end
   end
 end
