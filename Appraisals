@@ -15,5 +15,5 @@ end
 
 appraise "ember-1.10" do
   # Uses HTMLBars
-  gem "ember-source", "~> 1.10.0.beta.2"
+  gem "ember-source", "~> 1.10.0"
 end
