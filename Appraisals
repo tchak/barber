@@ -17,3 +17,8 @@ appraise "ember-1.10" do
   # Uses HTMLBars
   gem "ember-source", "~> 1.10.0"
 end
+
+appraise "handlebars-3.0" do
+  # Uses handlebars 3.0.x
+  gem "handlebars-source", "~> 3.0.0"
+end

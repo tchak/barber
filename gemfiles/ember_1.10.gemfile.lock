@@ -4,7 +4,7 @@ PATH
     barber (0.6.0)
       ember-source
       execjs
-      handlebars-source (>= 1.0.0.rc.4, < 3)
+      handlebars-source (>= 1.0.0.rc.4, < 3.1)
 
 GEM
   remote: https://rubygems.org/
@@ -16,7 +16,7 @@ GEM
     docile (1.1.5)
     ember-source (1.10.0)
     execjs (2.3.0)
-    handlebars-source (2.0.0)
+    handlebars-source (3.0.0)
     metaclass (0.0.4)
     minitest (4.7.5)
     mocha (1.1.0)
