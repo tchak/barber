@@ -14,10 +14,9 @@ GEM
       rake
       thor (>= 0.14.0)
     docile (1.1.5)
-    ember-source (1.9.1)
-      handlebars-source (~> 2.0)
+    ember-source (1.10.0)
     execjs (2.3.0)
-    handlebars-source (2.0.0)
+    handlebars-source (3.0.0)
     metaclass (0.0.4)
     minitest (4.7.5)
     mocha (1.1.0)
@@ -37,7 +36,7 @@ PLATFORMS
 DEPENDENCIES
   appraisal
   barber!
-  ember-source (~> 1.9.0)
+  handlebars-source (~> 3.0.0)
   minitest (~> 4.0)
   mocha (~> 1.0)
   rake

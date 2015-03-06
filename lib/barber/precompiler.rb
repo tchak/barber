@@ -75,7 +75,13 @@ module Barber
     end
 
     def source
-      @source ||= sources.map(&:read).join("\n;\n")
+      # hbs 3 has no reference to `window`.
+      @source ||= <<-SOURCE
+if (typeof window === 'undefined') {
+  window = this;
+};
+#{sources.map(&:read).join("\n;\n")}
+      SOURCE
     end
   end
 end
