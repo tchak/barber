@@ -86,6 +86,19 @@ class PrecompilerTest < MiniTest::Unit::TestCase
     assert_equal "Foo", custom_compiler.compile("{{hello}}")
   end
 
+  def test_has_an_easy_to_customize_public_interface
+    custom_compiler = Class.new Barber::Precompiler do
+      # Stub for non-handlebars environment
+      def handlebars_available?
+        false
+      end
+    end
+
+    assert_raises Barber::PrecompilerError do
+      custom_compiler.compile('{{hello}}')
+    end
+  end
+
   private
   def compile(template)
     Barber::Precompiler.compile template

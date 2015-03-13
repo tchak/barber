@@ -1,6 +1,5 @@
 require "barber/version"
 
-require 'handlebars/source'
 require 'ember/source'
 
 require "barber/precompiler"
