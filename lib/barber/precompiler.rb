@@ -88,8 +88,8 @@ if (typeof window === 'undefined') {
 
     def handlebars_available?
       require "handlebars/source" # handlebars precompilation is optional feature.
-    rescue LoadError
-      # noop
+    rescue LoadError => e
+      raise e unless e.message == 'cannot load such file -- handlebars/source'
     ensure
       return !!defined?(Handlebars::Source)
     end
