@@ -13,6 +13,22 @@ module Barber
       def sources
         super + [ember_template_precompiler]
       end
+
+      def compiler_version
+        cache_key = "ember-source:#{::Ember::VERSION}"
+
+        if handlebars_version
+          "handlebars:#{handlebars_version}/#{cache_key}"
+        else
+          cache_key
+        end
+      end
+
+      private
+
+      def handlebars_version
+        @handlebars_version ||= context.eval('typeof require !== "undefined" && require("handlebars") && require("handlebars").VERSION');
+      end
     end
   end
 end

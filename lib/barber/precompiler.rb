@@ -29,6 +29,10 @@ module Barber
       @handlebars ||= File.new(Handlebars::Source.bundled_path)
     end
 
+    def compiler_version
+      "handlebars:#{handlebars_version}"
+    end
+
     private
     # This method handles different types of user input. The precompiler
     # can be called from many different places which create interesting
@@ -92,6 +96,10 @@ if (typeof window === 'undefined') {
       # noop
     ensure
       return !!defined?(Handlebars::Source)
+    end
+
+    def handlebars_version
+      @handlebars_version ||= context.eval('Handlebars.VERSION')
     end
   end
 end

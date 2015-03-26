@@ -12,6 +12,12 @@ class EmberPrecompilerTest < MiniTest::Unit::TestCase
       "Ember precompile should inherit from Barber::Precompiler"
   end
 
+  def test_compiler_version
+    assert Barber::Ember::Precompiler.new.compiler_version
+  end
+
+  private
+
   def compile(template)
     Barber::Ember::Precompiler.compile template
   end
