@@ -13,7 +13,7 @@ class EmberPrecompilerTest < MiniTest::Unit::TestCase
   end
 
   def test_compiler_version
-    assert Barber::Ember::Precompiler.new.compiler_version
+    assert Barber::Ember::Precompiler.compiler_version
   end
 
   private
