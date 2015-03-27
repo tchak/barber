@@ -8,6 +8,10 @@ module Barber
         instance.compile(template)
       end
 
+      def compiler_version
+        instance.compiler_version
+      end
+
       private
 
       def instance

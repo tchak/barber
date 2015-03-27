@@ -100,7 +100,7 @@ class PrecompilerTest < MiniTest::Unit::TestCase
   end
 
   def test_compiler_version
-    assert Barber::Precompiler.new.compiler_version
+    assert Barber::Precompiler.compiler_version
   end
 
   private
