@@ -15,11 +15,11 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Barber::VERSION
 
-  gem.add_dependency "execjs", ['>= 1.2', "< 3"]
-  gem.add_dependency "ember-source"
+  gem.add_dependency "execjs", [">= 1.2", "< 3"]
+  gem.add_dependency "ember-source", [">= 1.0", "< 2"]
 
   gem.add_development_dependency "rake"
-  gem.add_development_dependency "handlebars-source", [">= 1.0.0.rc.4", "< 3.1"]
+  gem.add_development_dependency "handlebars-source", "< 3.1"
   gem.add_development_dependency "simplecov"
   gem.add_development_dependency "mocha", "~> 1.0"
   gem.add_development_dependency "appraisal"
