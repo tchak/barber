@@ -99,7 +99,12 @@ class PrecompilerTest < MiniTest::Unit::TestCase
     end
   end
 
+  def test_compiler_version
+    assert Barber::Precompiler.new.compiler_version
+  end
+
   private
+
   def compile(template)
     Barber::Precompiler.compile template
   end
