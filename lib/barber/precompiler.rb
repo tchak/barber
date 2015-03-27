@@ -5,7 +5,13 @@ module Barber
   class Precompiler
     class << self
       def compile(template)
-        new.compile(template)
+        instance.compile(template)
+      end
+
+      private
+
+      def instance
+        @instance ||= new
       end
     end
 
