@@ -15,7 +15,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Barber::VERSION
 
-  gem.add_dependency "execjs"
+  gem.add_dependency "execjs", ['>= 1.2', "< 3"]
   gem.add_dependency "ember-source"
 
   gem.add_development_dependency "rake"
