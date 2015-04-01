@@ -13,7 +13,19 @@ class EmberPrecompilerTest < MiniTest::Unit::TestCase
   end
 
   def test_compiler_version
-    assert Barber::Ember::Precompiler.compiler_version
+    assert_match /ember:/, Barber::Ember::Precompiler.compiler_version
+  end
+
+  def test_ember_template_compiler_path
+    assert Barber::Ember::Precompiler.respond_to?(:ember_template_compiler_path=)
+  end
+
+  def test_ember_template_compiler_path_is_configurable
+    compiler = Barber::Ember::Precompiler.new
+
+    compiler.ember_template_compiler_path = File.expand_path('../../fixtures/ember-template-compiler.js', __FILE__)
+
+    assert_match /ember:1\.11\.0/, compiler.compiler_version
   end
 
   private

@@ -2,8 +2,28 @@ module Barber
   module Ember
     class Precompiler < Barber::Precompiler
 
+      class << self
+        def ember_template_compiler_path=(path)
+          instance.ember_template_compiler_path = path
+        end
+      end
+
+      attr_reader :ember_template_compiler_path
+
+      def initialize
+        super
+
+        self.ember_template_compiler_path = ::Ember::Source.bundled_path_for("ember-template-compiler.js")
+      end
+
+      def ember_template_compiler_path=(path)
+        @ember = @ember_version = @context = nil
+
+        @ember_template_compiler_path = path
+      end
+
       def ember_template_precompiler
-        @ember ||= File.new(::Ember::Source.bundled_path_for("ember-template-compiler.js"))
+        @ember ||= File.new(@ember_template_compiler_path)
       end
 
       def precompiler
@@ -15,16 +35,18 @@ module Barber
       end
 
       def compiler_version
-        cache_key = "ember-source:#{::Ember::VERSION}"
+        compiler_version = []
+        compiler_version << "ember:#{ember_version}"
+        compiler_version << "handlebars:#{handlebars_version}" if handlebars_version
 
-        if handlebars_version
-          "handlebars:#{handlebars_version}/#{cache_key}"
-        else
-          cache_key
-        end
+        compiler_version.join('/')
       end
 
       private
+
+      def ember_version
+        @ember_version ||= context.eval('typeof Ember !== "undefined" && Ember.VERSION') || '(none)'
+      end
 
       def handlebars_version
         return @handlebars_version if defined?(@handlebars_version)
