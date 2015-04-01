@@ -92,7 +92,7 @@ module Barber
 
     def source
       # hbs 3 has no reference to `window`.
-      @source ||= <<-SOURCE
+      <<-SOURCE
 if (typeof window === 'undefined') {
   window = this;
 };
