@@ -27,7 +27,9 @@ module Barber
       private
 
       def handlebars_version
-        @handlebars_version ||= context.eval('typeof require !== "undefined" && require("handlebars") && require("handlebars").VERSION');
+        return @handlebars_version if defined?(@handlebars_version)
+
+        @handlebars_version = context.eval('typeof require !== "undefined" && require("handlebars") && require("handlebars").VERSION');
       end
     end
   end
