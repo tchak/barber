@@ -103,7 +103,7 @@ if (typeof window === 'undefined') {
     def handlebars_available?
       require "handlebars/source" # handlebars precompilation is optional feature.
     rescue LoadError => e
-      raise e unless e.message == 'cannot load such file -- handlebars/source'
+      raise e unless ['cannot load such file -- handlebars/source', 'no such file to load -- handlebars/source'].include?(e.message)
     ensure
       return !!defined?(Handlebars::Source)
     end
