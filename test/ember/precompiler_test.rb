@@ -4,7 +4,7 @@ class EmberPrecompilerTest < MiniTest::Unit::TestCase
   def test_calls_the_ember_handlebars_precompiler
     result = compile "Hello {{name}}"
     assert result
-    assert_match /data\.buffer|isHTMLBars: true/, result
+    assert_match /data\.buffer|isHTMLBars: true|"revision": "Ember@/, result
   end
 
   def test_is_a_precompiler
