@@ -18,6 +18,11 @@ appraise "ember-1.10" do
   gem "ember-source", "~> 1.10.0"
 end
 
+appraise "ember-1.13" do
+  # Uses the latest of stable
+  gem "ember-source", "~> 1.13.0"
+end
+
 appraise "handlebars-3.0" do
   # Uses handlebars 3.0.x
   gem "handlebars-source", "~> 3.0.0"
