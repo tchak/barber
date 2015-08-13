@@ -19,7 +19,7 @@ appraise "ember-1.10" do
 end
 
 appraise "ember-1.13" do
-  # Uses the latest of stable
+  # Uses the latest of 1.x
   gem "ember-source", "~> 1.13.0"
 end
 
