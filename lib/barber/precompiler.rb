@@ -91,10 +91,13 @@ module Barber
     end
 
     def source
-      # hbs 3 has no reference to `window`.
+      # hbs 3 has no reference to `window` and `self`.
       <<-SOURCE
 if (typeof window === 'undefined') {
   window = this;
+};
+if (typeof self === 'undefined') {
+  self = this;
 };
 #{sources.map(&:read).join("\n;\n")}
       SOURCE
