@@ -23,9 +23,9 @@ appraise "ember-1.13" do
   gem "ember-source", "~> 1.13.0"
 end
 
-appraise "ember-2.1" do
+appraise "ember-2.2" do
   # Uses the latest of 2.x
-  gem "ember-source", "~> 2.1.0"
+  gem "ember-source", "~> 2.2.0"
 end
 
 appraise "handlebars-3.0" do
