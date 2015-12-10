@@ -66,6 +66,10 @@ class PrecompilerTest < MiniTest::Unit::TestCase
     assert result
   end
 
+  def test_handlebars_available_works
+    assert Barber::Precompiler.handlebars_available?
+  end
+
   def test_raises_an_error_on_bad_templates
     assert_raises Barber::PrecompilerError do
       compile "Hello {{"
@@ -89,7 +93,7 @@ class PrecompilerTest < MiniTest::Unit::TestCase
   def test_has_an_easy_to_customize_public_interface
     custom_compiler = Class.new Barber::Precompiler do
       # Stub for non-handlebars environment
-      def handlebars_available?
+      def self.handlebars_available?
         false
       end
     end

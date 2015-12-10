@@ -12,6 +12,14 @@ module Barber
         instance.compiler_version
       end
 
+      def handlebars_available?
+        require 'handlebars/source' # handlebars precompilation is optional feature.
+      rescue LoadError => e
+        raise e unless ['cannot load such file -- handlebars/source', 'no such file to load -- handlebars/source'].include?(e.message)
+      ensure
+        return !!defined?(Handlebars::Source)
+      end
+
       private
 
       def instance
@@ -31,7 +39,7 @@ module Barber
 
     def sources
       sources = [precompiler]
-      sources << handlebars if handlebars_available?
+      sources << handlebars if self.class.handlebars_available?
       sources
     end
 
@@ -101,14 +109,6 @@ if (typeof self === 'undefined') {
 };
 #{sources.map(&:read).join("\n;\n")}
       SOURCE
-    end
-
-    def handlebars_available?
-      require "handlebars/source" # handlebars precompilation is optional feature.
-    rescue LoadError => e
-      raise e unless ['cannot load such file -- handlebars/source', 'no such file to load -- handlebars/source'].include?(e.message)
-    ensure
-      return !!defined?(Handlebars::Source)
     end
 
     def handlebars_version
