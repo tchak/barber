@@ -1,10 +1,19 @@
+language: ruby
+sudo: false
+cache: bundler
 rvm:
   - "2.0.0"
   - "2.1"
   - "2.2"
   - jruby-19mode
   - rbx-19mode
-sudo: false
-before_script:
-  - bundle exec appraisal install
-script: bundle exec rake appraisal
+env:
+  matrix:
+    - EMBER_SOURCE_VERSION="~> 1.0.0" # Uses handlebars-source 1.0.12
+    - EMBER_SOURCE_VERSION="~> 1.8.0" # Uses handlebars-source 1.3.0
+    - EMBER_SOURCE_VERSION="~> 1.9.0" # Uses handlebars-source 2.0.0
+    - EMBER_SOURCE_VERSION="~> 1.10.0" # Uses HTMLBars
+    - EMBER_SOURCE_VERSION="~> 1.13.0" # The latest Ember.js 1.x
+    - EMBER_SOURCE_VERSION="~> 2.2.0" # The latest Ember.js 2.x
+    - EMBER_SOURCE_VERSION="~> 2.0"
+      HANDLEBARS_SOURCE_VERSION="~> 3.0.0" # Uses handlebars-source 3.0.x
