@@ -13,7 +13,7 @@ module Barber
 
   class FilePrecompiler < InlinePrecompiler
     class << self
-      def call(template)
+      def call(template, options = nil)
         "#{super};"
       end
     end
