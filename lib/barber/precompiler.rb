@@ -4,8 +4,8 @@ require 'json'
 module Barber
   class Precompiler
     class << self
-      def compile(template)
-        instance.compile(template)
+      def compile(template, options = nil)
+        instance.compile(template, options)
       end
 
       def compiler_version
@@ -27,8 +27,8 @@ module Barber
       end
     end
 
-    def compile(template)
-      context.call precompile_function, sanitize(template)
+    def compile(template, options = nil)
+      context.call precompile_function, sanitize(template), options
     rescue ExecJS::ProgramError => ex
       raise Barber::PrecompilerError.new(template, ex)
     end
