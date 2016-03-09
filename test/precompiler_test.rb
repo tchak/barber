@@ -104,7 +104,7 @@ class PrecompilerTest < Minitest::Test
   end
 
   def test_compiler_version
-    assert_match /handlebars:/, Barber::Precompiler.compiler_version
+    assert_match %r{handlebars:}, Barber::Precompiler.compiler_version
   end
 
   private

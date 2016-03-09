@@ -4,7 +4,7 @@ class EmberPrecompilerTest < Minitest::Test
   def test_calls_the_ember_handlebars_precompiler
     result = compile "Hello {{name}}"
     assert result
-    assert_match /data\.buffer|isHTMLBars: true|"revision": "Ember@/, result
+    assert_match %r{data\.buffer|isHTMLBars: true|"revision": "Ember@}, result
   end
 
   def test_is_a_precompiler
@@ -13,7 +13,7 @@ class EmberPrecompilerTest < Minitest::Test
   end
 
   def test_compiler_version
-    assert_match /ember:/, Barber::Ember::Precompiler.compiler_version
+    assert_match %r{ember:}, Barber::Ember::Precompiler.compiler_version
   end
 
   def test_ember_template_compiler_path
@@ -25,7 +25,7 @@ class EmberPrecompilerTest < Minitest::Test
 
     compiler.ember_template_compiler_path = File.expand_path('../../fixtures/ember-template-compiler.js', __FILE__)
 
-    assert_match /ember:1\.11\.0/, compiler.compiler_version
+    assert_match %r{ember:1\.11\.0}, compiler.compiler_version
   end
 
   private
