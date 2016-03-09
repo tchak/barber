@@ -1,7 +1,7 @@
 require 'test_helper'
 require 'stringio'
 
-class PrecompilerTest < MiniTest::Unit::TestCase
+class PrecompilerTest < Minitest::Test
   def test_returns_a_template
     result = compile "Hello {{name}}"
     assert result
@@ -90,7 +90,7 @@ class PrecompilerTest < MiniTest::Unit::TestCase
     assert_equal "Foo", custom_compiler.compile("{{hello}}")
   end
 
-  def test_has_an_easy_to_customize_public_interface
+  def test_for_handlebars_anavailable
     custom_compiler = Class.new Barber::Precompiler do
       # Stub for non-handlebars environment
       def self.handlebars_available?
@@ -104,7 +104,7 @@ class PrecompilerTest < MiniTest::Unit::TestCase
   end
 
   def test_compiler_version
-    assert_match /handlebars:/, Barber::Precompiler.compiler_version
+    assert_match %r{handlebars:}, Barber::Precompiler.compiler_version
   end
 
   private

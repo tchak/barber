@@ -22,5 +22,5 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency "handlebars-source", "< 4.1"
   gem.add_development_dependency "simplecov"
   gem.add_development_dependency "mocha", "~> 1.0"
-  gem.add_development_dependency "minitest", "~> 4.0"
+  gem.add_development_dependency "minitest", "~> 5.0"
 end

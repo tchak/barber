@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PrecompilersTest < MiniTest::Unit::TestCase
+class PrecompilersTest < Minitest::Test
   def template ; "{{hello}}" ; end
   def compiled_template ; "function()" ; end
   def compile_option ; {moduleName: "hello"} ; end
