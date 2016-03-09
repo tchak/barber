@@ -90,7 +90,7 @@ class PrecompilerTest < Minitest::Test
     assert_equal "Foo", custom_compiler.compile("{{hello}}")
   end
 
-  def test_has_an_easy_to_customize_public_interface
+  def test_for_handlebars_anavailable
     custom_compiler = Class.new Barber::Precompiler do
       # Stub for non-handlebars environment
       def self.handlebars_available?
