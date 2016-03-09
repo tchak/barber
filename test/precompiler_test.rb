@@ -1,7 +1,7 @@
 require 'test_helper'
 require 'stringio'
 
-class PrecompilerTest < MiniTest::Unit::TestCase
+class PrecompilerTest < Minitest::Test
   def test_returns_a_template
     result = compile "Hello {{name}}"
     assert result

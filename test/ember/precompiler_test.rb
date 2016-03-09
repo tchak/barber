@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class EmberPrecompilerTest < MiniTest::Unit::TestCase
+class EmberPrecompilerTest < Minitest::Test
   def test_calls_the_ember_handlebars_precompiler
     result = compile "Hello {{name}}"
     assert result

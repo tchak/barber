@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class EmberPrecompilersTest < MiniTest::Unit::TestCase
+class EmberPrecompilersTest < Minitest::Test
   def template ; "{{hello}}" ; end
   def compiled_template ; "function()" ; end
   def compile_option ; {moduleName: "hello"} ; end

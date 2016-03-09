@@ -3,6 +3,7 @@ SimpleCov.start
 
 require 'barber'
 
+require 'minitest'
 require 'minitest/unit'
 require 'minitest/autorun'
 
