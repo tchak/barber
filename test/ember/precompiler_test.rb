@@ -28,6 +28,21 @@ class EmberPrecompilerTest < Minitest::Test
     assert_match %r{ember:1\.11\.0}, compiler.compiler_version
   end
 
+  def test_for_handlebars_anavailable
+    if  Gem::Version.new(Ember::VERSION) < Gem::Version.new('1.10')
+      skip "This ember-source (#{Ember::VERSION}) is too old to assert without Handlebars."
+    end
+
+    custom_compiler = Class.new Barber::Ember::Precompiler do
+      # Stub for non-handlebars environment
+      def self.handlebars_available?
+        false
+      end
+    end
+
+    assert_match %r{function\(\)}, custom_compiler.compile('{{hello}}')
+  end
+
   private
 
   def compile(template)
