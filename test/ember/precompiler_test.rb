@@ -4,7 +4,7 @@ class EmberPrecompilerTest < Minitest::Test
   def test_calls_the_ember_handlebars_precompiler
     result = compile "Hello {{name}}"
     assert result
-    assert_match %r{data\.buffer|isHTMLBars: true|"revision": "Ember@}, result
+    assert_match %r{data\.buffer|isHTMLBars: true|"revision": "Ember@|\\"statements\\"}, result
   end
 
   def test_is_a_precompiler
@@ -40,7 +40,7 @@ class EmberPrecompilerTest < Minitest::Test
       end
     end
 
-    assert_match %r{function\(\)}, custom_compiler.compile('{{hello}}')
+    assert_match %r{function\(\)|\\"statements\\"}, custom_compiler.compile('{{hello}}')
   end
 
   private
