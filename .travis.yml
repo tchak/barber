@@ -14,7 +14,7 @@ env:
     - EMBER_SOURCE_VERSION="~> 1.10.0" # Uses HTMLBars
     - EMBER_SOURCE_VERSION="~> 1.13.0" # The latest Ember.js 1.x
     - EMBER_SOURCE_VERSION="~> 2.9.0" # The latest Ember.js 2.x
-    - EMBER_SOURCE_VERSION="~> 2.10.0.beta.2" # Uses Glimmer 2
+    - EMBER_SOURCE_VERSION="~> 2.10.0" # Uses Glimmer 2
     - EMBER_SOURCE_VERSION="~> 2.0"
       HANDLEBARS_SOURCE_VERSION="~> 3.0.0" # Uses handlebars-source 3.0.x
     - EMBER_SOURCE_VERSION="~> 2.0"
