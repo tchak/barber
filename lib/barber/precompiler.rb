@@ -107,6 +107,11 @@ if (typeof window === 'undefined') {
 if (typeof self === 'undefined') {
   self = this;
 };
+// Workaround for `ExecJS::RubyRhinoRuntime`. It throws an error: `Invalid JavaScript value of type org.mozilla.javascript.MemberBox` on inherit `Error`.
+if (Object.defineProperty) {
+  Object.defineProperty(Error, 'stackTraceLimit', {configurable: false});
+  Object.defineProperty(Error, 'prepareStackTrace', {configurable: false});
+}
 #{sources.map(&:read).join("\n;\n")}
       SOURCE
     end
