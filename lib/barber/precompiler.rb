@@ -112,6 +112,10 @@ if (Object.defineProperty) {
   Object.defineProperty(Error, 'stackTraceLimit', {configurable: false});
   Object.defineProperty(Error, 'prepareStackTrace', {configurable: false});
 }
+// Workaround for `ExecJS::RubyRhinoRuntime`. It has no `setTimeout` but backburner references `setTimeout`.
+if (typeof setTimeout === 'undefined') {
+  setTimeout = function(fn) { fn(); };
+};
 #{sources.map(&:read).join("\n;\n")}
       SOURCE
     end
