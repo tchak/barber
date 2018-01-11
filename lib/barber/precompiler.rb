@@ -38,7 +38,8 @@ module Barber
     end
 
     def sources
-      sources = [precompiler]
+      sources = []
+      sources << precompiler
       sources << handlebars if self.class.handlebars_available?
       sources
     end
@@ -99,21 +100,38 @@ module Barber
     end
 
     def source
+      source_fixes + sources.map(&:read).join("\n;\n")
+    end
+
+    def source_fixes
+      shims = []
+
       # hbs 3 has no reference to `window` and `self`.
-      <<-SOURCE
+      shims << <<-JS
 if (typeof window === 'undefined') {
   window = this;
-};
+}
 if (typeof self === 'undefined') {
   self = this;
-};
-// Workaround for `ExecJS::RubyRhinoRuntime`. It throws an error: `Invalid JavaScript value of type org.mozilla.javascript.MemberBox` on inherit `Error`.
+}
+      JS
+
+      # Workaround for `ExecJS::RubyRhinoRuntime`. It throws an error: `Invalid JavaScript value of type org.mozilla.javascript.MemberBox` on inherit `Error`.
+      shims << <<-JS
 if (Object.defineProperty) {
   Object.defineProperty(Error, 'stackTraceLimit', {configurable: false});
   Object.defineProperty(Error, 'prepareStackTrace', {configurable: false});
 }
-#{sources.map(&:read).join("\n;\n")}
-      SOURCE
+      JS
+
+      # Workaround for `ExecJS::RubyRhinoRuntime`. It has no `setTimeout` but backburner references `setTimeout`.
+      shims << <<-JS
+if (typeof setTimeout === 'undefined') {
+  setTimeout = function(fn) { fn(); };
+}
+      JS
+
+      shims.join("\n")
     end
 
     def handlebars_version
