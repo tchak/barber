@@ -7,6 +7,7 @@ Gem::Specification.new do |gem|
   gem.description   = %q{Handlebars precompilation}
   gem.summary       = %q{Handlebars precompilation toolkit}
   gem.homepage      = "https://github.com/tchak/barber"
+  gem.license       = "MIT"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
