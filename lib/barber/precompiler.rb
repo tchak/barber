@@ -131,6 +131,17 @@ if (typeof setTimeout === 'undefined') {
 }
       JS
 
+      # Workaround for `ExecJS::ExternalRuntime`. Ember Deprecation warnings output to stdout, and break parsing.
+      if ExecJS.runtime.is_a?(ExecJS::ExternalRuntime)
+        shims << <<-JS
+
+if (typeof Ember === 'undefined') { Ember = {}; };
+Ember.deprecate = function () { return this; };
+Ember.deprecateFunc = function(_, func) { return func; };
+
+        JS
+      end
+
       shims.join("\n")
     end
 
